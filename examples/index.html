@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <style>
+    div {
+        height: 300px;
+        width: 400px;
+        margin: 0;
+        padding: 0;
+        background-color: grey;
+        position:relative;
+    }
+
+    /* attaching pseudo classes to css classes which can be switched
+    thus adding changing the css of the :after pseudo class on the 
+    element. All this since there isnt a way of accessing the pseudo
+    class via javascript.  */
+    .zero:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        content:"";
+        background-color: transparent;
+        height: 0px;
+        width: 0px;
+        border-top: 150px solid blue;
+        border-bottom: 150px solid transparent;
+        border-left: 200px solid transparent;
+        border-right: 200px solid transparent;
+    }
+    .one:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        content:"";
+        background-color: transparent;
+        height: 0px;
+        width: 0px;
+        border-top: 150px solid transparent;
+        border-bottom: 150px solid transparent;
+        border-left: 200px solid transparent;
+        border-right: 200px solid blue;
+    }
+    .two:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        content:"";
+        background-color: transparent;
+        height: 0px;
+        width: 0px;
+        border-top: 150px solid transparent;
+        border-bottom: 150px solid blue;
+        border-left: 200px solid transparent;
+        border-right: 200px solid transparent;
+    }
+    .three:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        content:"";
+        background-color: transparent;
+        height: 0px;
+        width: 0px;
+        border-top: 150px solid transparent;
+        border-bottom: 150px solid transparent;
+        border-left: 200px solid blue;
+        border-right: 200px solid transparent;
+    }
+    </style>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="../lib/whichTriangle.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('div#test').setupTriangle().mousemove(function(e) {
+            $this = $(this);
+            switch ($this.whichTriangle(e)) {
+                case 0:
+                    $this.removeClass().addClass('zero');
+                    break;
+                case 1:
+                    $this.removeClass().addClass('one');
+                    break;
+                case 2:
+                    $this.removeClass().addClass('two');
+                    break;
+                case 3:
+                    $this.removeClass().addClass('three');
+                    break;
+                default:
+                    $this.removeClass();
+            }
+        }).mouseout(function() {
+            $(this).removeClass()
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div id="test" class=""></div>
+</body>
+
+</html>
