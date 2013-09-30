@@ -39,9 +39,9 @@ returns `-1`.
 #### Update triangle
 
 ```javascript
-$( selector ).updateTriangle()
+$( selector ).updateTriangles()
 ```
-`element.updateTriangle()` updates the co-ordinates that describe the triangles for the element. This is required when
+`element.updateTriangles()` updates the co-ordinates that describe the triangles for the element. This is required when
 the dimensions and/or position of the element changes.
 
 With this you can easily build things like direction sensitive hovers, direction sensitive interactions, etc.
