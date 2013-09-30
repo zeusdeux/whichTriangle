@@ -5,7 +5,7 @@ Did you say [demo](http://experiments.muditameta.com/whichTriangle/)?
 
 Installation
 ----------------
-- Download either `whichTriangle.js` or `whichTriangle.min.js`  
+- Download either `whichTriangle.js` or `whichTriangle.min.js` from `lib`
 - Add it after you include `jQuery`
 - You're ready to go!
 
