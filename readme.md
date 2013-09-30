@@ -36,7 +36,7 @@ returns `-1`.
 - It returns `3` for `left` triangle
 - It returns `-1` when co-ordinates outside triangles
 
-#### Update triangle
+#### Update triangles
 
 ```javascript
 $( selector ).updateTriangles()
