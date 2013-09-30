@@ -13,11 +13,7 @@
         background-color: grey;
         position:relative;
     }
-    /* attaching pseudo classes to css classes which can be switched
-    thus adding changing the css of the :after pseudo class on the 
-    element. All this since there isnt a way of accessing the pseudo
-    class via javascript.  */
-    .zero:after {
+    #test:after {
         position: absolute;
         top: 0;
         left: 0;
@@ -26,48 +22,30 @@
         background-color: transparent;
         height: 0px;
         width: 0px;
+    }
+    /* attaching pseudo classes to css classes which can be switched
+    thus adding changing the css of the :after pseudo class on the 
+    element. All this since there isnt a way of accessing the pseudo
+    class via javascript.  */
+    .zero:after {
         border-top: 150px solid blue;
         border-bottom: 150px solid transparent;
         border-left: 200px solid transparent;
         border-right: 200px solid transparent;
     }
     .one:after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        content:"";
-        background-color: transparent;
-        height: 0px;
-        width: 0px;
         border-top: 150px solid transparent;
         border-bottom: 150px solid transparent;
         border-left: 200px solid transparent;
         border-right: 200px solid blue;
     }
     .two:after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        content:"";
-        background-color: transparent;
-        height: 0px;
-        width: 0px;
         border-top: 150px solid transparent;
         border-bottom: 150px solid blue;
         border-left: 200px solid transparent;
         border-right: 200px solid transparent;
     }
     .three:after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        content:"";
-        background-color: transparent;
-        height: 0px;
-        width: 0px;
         border-top: 150px solid transparent;
         border-bottom: 150px solid transparent;
         border-left: 200px solid blue;
