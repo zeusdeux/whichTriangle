@@ -14,9 +14,9 @@ Usage
 #### Setup
 
 ```javascript
-$( selector ).setupTriangle()
+$( selector ).setupTriangles()
 ```
-`element.setupTriangle()` sets up the triangles for the element its called on.   
+`element.setupTriangles()` sets up the triangles for the element its called on.   
 It returns the `element` so it can be chained.
 
 #### Test co-ordinates
