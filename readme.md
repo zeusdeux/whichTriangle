@@ -2,6 +2,7 @@ whichTriangle.js
 ================
 A small jQuery plugin that helps you divide an element into four triangles and test co-ordinates on them.   
 Did you say [demo](http://experiments.muditameta.com/whichTriangle/)?
+*More demos coming soon.*
 
 Installation
 ----------------
