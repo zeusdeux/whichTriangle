@@ -5,10 +5,11 @@
     "keywords": [
         "direction",
         "whichTriangle",
-        "hover"
+        "hover",
+        "triangle"
     ],
     "demo": "http://experiments.muditameta.com/whichTriangle/",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "author": {
         "name": "Mudit Ameta",
         "url": "http://www.muditameta.com/"
@@ -23,6 +24,6 @@
     "homepage": "https://github.com/zeusdeux/whichTriangle",
     "docs": "https://github.com/zeusdeux/whichTriangle",
     "dependencies": {
-        "jquery": ">=1.0"
+        "jquery": ">=1.2.6"
     }
 }
