@@ -15,7 +15,7 @@ Usage
 #### Setup
 
 ```javascript
-$( selector ).setupTriangles( {'midDiameter':100} )
+$( selector ).setupTriangles( {'midDiameter': 100} )
 ```
 `element.setupTriangles()` sets up the triangles for the element its called on.   
 It returns the `element` so it can be chained.
