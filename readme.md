@@ -15,10 +15,14 @@ Usage
 #### Setup
 
 ```javascript
-$( selector ).setupTriangles()
+$( selector ).setupTriangles( settings )
 ```
 `element.setupTriangles()` sets up the triangles for the element its called on.   
 It returns the `element` so it can be chained.
+
+It accepts one settings via the `settings` object.
+- The `midDiameter` settings enables the creation of a circular mid tolerance region.   
+If the coordinates fall in this region then `4` is returned and not the usual `0-3` or `-1`.
 
 #### Test co-ordinates
 
@@ -35,6 +39,7 @@ returns `-1`.
 - It returns `1` for `right` triangle
 - It returns `2` for `bottom` triangle
 - It returns `3` for `left` triangle
+- It returns `4` if `midDiameter > 0` and the coordinates are in the mid tolerance region
 - It returns `-1` when co-ordinates outside triangles
 
 #### Update triangles
