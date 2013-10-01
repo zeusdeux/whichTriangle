@@ -3,22 +3,32 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>whichTriangle.js</title>
+    <meta name="keywords" content="jquery,javascript,direction,sensitive,hover,interaction,triangles">
+    <meta name="description" content="Home page of whichTriangle.js">
+    <meta name="author" content="Mudit Ameta">
+    <meta name="robots" content="index,follow">
+    <link rel="stylesheet" href="./common.css">
     <style>
-    div {
+    div.container {
+        width: 420px;
+        margin: 5% auto;
+        text-align: center;
+    }
+    #test {
         height: 300px;
         width: 400px;
         margin: 0;
         padding: 0;
         background-color: grey;
         position:relative;
+        margin: 0 auto;
     }
     #test:after {
         position: absolute;
         top: 0;
         left: 0;
         display: block;
-        content:"";
         background-color: transparent;
         height: 0px;
         width: 0px;
@@ -28,37 +38,55 @@
     element. All this since there isnt a way of accessing the pseudo
     class via javascript.  */
     .zero:after {
-        border-top: 150px solid blue;
+        content:"top";
+        border-top: 150px solid #95D6FD;
         border-bottom: 150px solid transparent;
         border-left: 200px solid transparent;
         border-right: 200px solid transparent;
     }
     .one:after {
+        content:"right";
         border-top: 150px solid transparent;
         border-bottom: 150px solid transparent;
         border-left: 200px solid transparent;
-        border-right: 200px solid blue;
+        border-right: 200px solid #95D6FD;
     }
     .two:after {
+        content:"bottom";
         border-top: 150px solid transparent;
-        border-bottom: 150px solid blue;
+        border-bottom: 150px solid #95D6FD;
         border-left: 200px solid transparent;
         border-right: 200px solid transparent;
     }
     .three:after {
+        content:"left";
         border-top: 150px solid transparent;
         border-bottom: 150px solid transparent;
-        border-left: 200px solid blue;
+        border-left: 200px solid #95D6FD;
         border-right: 200px solid transparent;
+    }
+    #test.red {
+        background-color: #FFCCCC;
+    }
+    #test.red:after {
+        content:"in middle region with 100px tolerance";
+        display: block;
+        height: 300px;
+        width: 400px;
+        text-align: center;
+        line-height: 15em;
     }
     </style>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="../lib/whichTriangle.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('div#test').setupTriangles().mousemove(function(e) {
+        $('div#test').setupTriangles({
+            "midDiameter": 100
+        }).mousemove(function(e) {
             $this = $(this);
-            switch ($this.whichTriangle(e)) {
+            var c = $this.whichTriangle(e);
+            switch (c) {
                 case 0:
                     $this.removeClass().addClass('zero');
                     break;
@@ -71,8 +99,12 @@
                 case 3:
                     $this.removeClass().addClass('three');
                     break;
+                case 4:
+                    $this.removeClass().addClass('red');
+                    break;
                 default:
                     $this.removeClass();
+                    break;
             }
         }).mouseout(function() {
             $(this).removeClass()
@@ -97,11 +129,33 @@
 </head>
 
 <body>
-
+    <header>
+        <a href="./index.html">
+            <h1 class="left">whichTriangle.js</h1>
+        </a>
+    </header>
     <a href="https://github.com/zeusdeux/whichTriangle">
         <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
     </a>
-    <div id="test" class=""></div>
+    <div class="container">
+        <h1>Move mouse in box below:</h1>
+        <div id="test" class=""></div>
+    </div>
+
+    <footer>
+        <nav>
+            <h1>More demos:</h1>
+            <ul>
+                <a href="./metroTile.html">
+                    <li>Metro style tile interactions demo</li>
+                </a>
+                <a href="./index.html">
+                    <li>More shall be added soon..</li>
+                </a>
+            </ul>
+        </nav>
+    </footer>
+
 </body>
 
 </html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Metro Tiles</title>
+    <meta name="keywords" content="jquery,javascript,direction,sensitive,hover,metro,tiles,interaction">
+    <meta name="description" content="Metro tiles like interaction built using whichTriangle.js">
+    <meta name="author" content="Mudit Ameta">
+    <meta name="robots" content="index,follow">
+    <link rel="stylesheet" href="./common.css">
+    <link rel="stylesheet" href="./metro.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="../lib/whichTriangle.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        $('div.metro').each(function() {
+            var activeClass = "",
+                mouseupFired;
+            $(this).setupTriangles({
+                "midDiameter": 150,
+                "autoUpdate": true
+            })
+                .mousedown(function(e) {
+                    var $this = $(this);
+                    var $offset = $this.offset();
+                    var ht = $this.height();
+                    var wd = $this.width();
+                    var leftMostEdge = Math.ceil($offset.left) + wd;
+                    var bottomMostEdge = Math.ceil($offset.top) + ht;
+                    if (e.clientX > leftMostEdge)
+                        e.clientX = leftMostEdge;
+                    if (e.clientY > bottomMostEdge)
+                        e.clientY = bottomMostEdge;
+                    var c = $this.whichTriangle(e);
+                    switch (c) {
+                        case 0:
+                            $this.removeClass(activeClass + '-origin').addClass('transform-top-back');
+                            activeClass = 'transform-top-back';
+                            $this.addClass(activeClass + '-origin');
+                            break;
+                        case 1:
+                            $this.removeClass(activeClass + '-origin').addClass('transform-right-back');
+                            activeClass = 'transform-right-back';
+                            $this.addClass(activeClass + '-origin');
+                            break;
+                        case 2:
+                            $this.removeClass(activeClass + '-origin').addClass('transform-bottom-back');
+                            activeClass = 'transform-bottom-back';
+                            $this.addClass(activeClass + '-origin');
+                            break;
+                        case 3:
+                            $this.removeClass(activeClass + '-origin').addClass('transform-left-back');
+                            activeClass = 'transform-left-back';
+                            $this.addClass(activeClass + '-origin');
+                            break;
+                        case 4:
+                            $this.removeClass(activeClass + '-origin').addClass('transform-whole-back');
+                            activeClass = 'transform-whole-back';
+                            $this.addClass(activeClass + '-origin');
+                            break;
+                        default:
+                            $this.removeClass(activeClass).removeClass(activeClass + '-origin');
+                            break;
+                    };
+                    mouseupFired = false;
+                })
+                .mouseup(function(e) {
+                    $(this).removeClass(activeClass);
+                    mouseupFired = true;
+                })
+                .mouseout(function(e) {
+                    if (typeof mouseupFired !== 'undefined' && !mouseupFired)
+                        $(this).trigger('mouseup');
+                });
+
+        });
+
+        $(window).resize(function() {
+            $('div.metro').each(function() {
+                $(this).updateTriangles();
+            });
+        });
+    });
+    </script>
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33892300-1']);
+    _gaq.push(['_setDomainName', 'muditameta.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</head>
+
+<body>
+
+
+    <header>
+        <a href="./index.html">
+            <h1 class="left">whichTriangle.js</h1>
+        </a>
+        <nav class="right">
+            <ul>
+                <a href="./index.html">
+                    <li>Home</li>
+                </a>
+               <!--  <li> | </li> -->
+                <!-- <a href="./hovers.html">
+                    <li>Next</li>
+                </a> -->
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <a href="./metroTile_perfTest.html" style="position: fixed; bottom: 20px; right: 20px; color: #222;">Performance test</a>
+        <p>Click on different areas [center, edges, etc] of the tiles for different behaviours.</p>
+        <div class="perspective left">
+            <div class="metro">
+                <p>Metro Tile</p>
+            </div>
+        </div>
+        <div class="perspective left">
+            <div class="metro">
+                <p>Metro Tile</p>
+            </div>
+        </div>
+        <div class="perspective left">
+            <div class="metro">
+                <p>Metro Tile</p>
+            </div>
+        </div>
+        <div class="perspective left">
+            <div class="metro">
+                <p>Metro Tile</p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
