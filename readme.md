@@ -49,7 +49,8 @@ returns `-1`.
 $( selector ).updateTriangles()
 ```
 `element.updateTriangles()` updates the co-ordinates that describe the triangles for the element. This is required when
-the dimensions and/or position of the element changes.
+the dimensions and/or position of the element changes. This is also required when the window is resized, etc as the relative
+coordinates of the triangles change.
 
 With this you can easily build things like direction sensitive hovers, direction sensitive interactions, etc.
 
