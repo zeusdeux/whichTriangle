@@ -1,7 +1,8 @@
 whichTriangle.js
 ================
 A small jQuery plugin that helps you divide an element into four triangles and test co-ordinates on them.   
-Did you say [demo](http://experiments.muditameta.com/whichTriangle/)?
+It helps you add direction sensitivity to all the elements it is called on.   
+Here, have a [demo](http://experiments.muditameta.com/whichTriangle/).   
 *More demos coming soon.*
 
 Installation
