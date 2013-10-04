@@ -11,80 +11,91 @@
     <link rel="stylesheet" href="./common.css">
     <link rel="stylesheet" href="./metro.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+        $(document).bind("mobileinit", function(){
+            $.extend(  $.mobile , {autoInitializePage: false})
+        });
+    </script>
+    
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.2/jquery.mobile.min.js"></script>
-    <script src="../lib/whichTriangle.min.js"></script>
+    <script src="./lib/whichTriangle.min.js"></script>
     <script>
-    $(document).ready(function() {
-
-        $('div.metro').each(function() {
+    (function ($) {
+    $(document).ready(function () {
+        $('div.metro').each(function () {
             var activeClass = "",
                 mouseupFired;
             $(this).setupTriangles({
                 "midDiameter": 150,
                 "autoUpdate": true
             })
-                .on('vmousedown',(function(e) {
+                .on('vmousedown', function (e) {
                     var $this = $(this);
                     var $offset = $this.offset();
                     var ht = $this.height();
                     var wd = $this.width();
                     var leftMostEdge = Math.ceil($offset.left) + wd;
                     var bottomMostEdge = Math.ceil($offset.top) + ht;
-                    if (e.clientX > leftMostEdge)
+                    if (e.clientX > leftMostEdge) {
                         e.clientX = leftMostEdge;
-                    if (e.clientY > bottomMostEdge)
+                    }
+                    if (e.clientY > bottomMostEdge) {
                         e.clientY = bottomMostEdge;
+                    }
                     var c = $this.whichTriangle(e);
                     switch (c) {
-                        case 0:
-                            $this.removeClass(activeClass + '-origin').addClass('transform-top-back');
-                            activeClass = 'transform-top-back';
-                            $this.addClass(activeClass + '-origin');
-                            break;
-                        case 1:
-                            $this.removeClass(activeClass + '-origin').addClass('transform-right-back');
-                            activeClass = 'transform-right-back';
-                            $this.addClass(activeClass + '-origin');
-                            break;
-                        case 2:
-                            $this.removeClass(activeClass + '-origin').addClass('transform-bottom-back');
-                            activeClass = 'transform-bottom-back';
-                            $this.addClass(activeClass + '-origin');
-                            break;
-                        case 3:
-                            $this.removeClass(activeClass + '-origin').addClass('transform-left-back');
-                            activeClass = 'transform-left-back';
-                            $this.addClass(activeClass + '-origin');
-                            break;
-                        case 4:
-                            $this.removeClass(activeClass + '-origin').addClass('transform-whole-back');
-                            activeClass = 'transform-whole-back';
-                            $this.addClass(activeClass + '-origin');
-                            break;
-                        default:
-                            $this.removeClass(activeClass).removeClass(activeClass + '-origin');
-                            break;
-                    };
+                    case 0:
+                        $this.removeClass(activeClass + '-origin').addClass('transform-top-back');
+                        activeClass = 'transform-top-back';
+                        $this.addClass(activeClass + '-origin');
+                        break;
+                    case 1:
+                        $this.removeClass(activeClass + '-origin').addClass('transform-right-back');
+                        activeClass = 'transform-right-back';
+                        $this.addClass(activeClass + '-origin');
+                        break;
+                    case 2:
+                        $this.removeClass(activeClass + '-origin').addClass('transform-bottom-back');
+                        activeClass = 'transform-bottom-back';
+                        $this.addClass(activeClass + '-origin');
+                        break;
+                    case 3:
+                        $this.removeClass(activeClass + '-origin').addClass('transform-left-back');
+                        activeClass = 'transform-left-back';
+                        $this.addClass(activeClass + '-origin');
+                        break;
+                    case 4:
+                        $this.removeClass(activeClass + '-origin').addClass('transform-whole-back');
+                        activeClass = 'transform-whole-back';
+                        $this.addClass(activeClass + '-origin');
+                        break;
+                    default:
+                        $this.removeClass(activeClass).removeClass(activeClass + '-origin');
+                        break;
+                    }
                     mouseupFired = false;
-                }))
-                .on('vmouseup',(function(e) {
+                })
+                .on('vmouseup', function () {
                     $(this).removeClass(activeClass);
                     mouseupFired = true;
-                }))
-                .mouseout(function(e) {
-                    if (typeof mouseupFired !== 'undefined' && !mouseupFired)
+                })
+                .mouseout(function () {
+                    if (typeof mouseupFired !== 'undefined' && !mouseupFired) {
                         $(this).trigger('mouseup');
+                    }
                 });
 
         });
 
-        $(window).resize(function() {
-            $('div.metro').each(function() {
+        $(window).resize(function () {
+            $('div.metro').each(function () {
                 $(this).updateTriangles();
             });
         });
     });
-    </script>
+}(jQuery));
+
 
     <script type="text/javascript">
     var _gaq = _gaq || [];
